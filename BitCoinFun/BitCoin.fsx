@@ -5,16 +5,11 @@ open System.Net
 open FSharp.Data
 open FSharp.Data.JsonExtensions
 
-
-
-
-
 let getBitCoinPx() = 
 
     let url = """http://api.coindesk.com/v1/bpi/currentprice/USD.json"""
     use client =  new WebClient()
     let result = client.DownloadString(url)
-    //printfn "%s" result
 
     let json = JsonValue.Parse(result)
     let fx = (json?bpi?USD?rate_float).AsFloat()                                  
@@ -23,8 +18,4 @@ let getBitCoinPx() =
 
 getBitCoinPx()
 
-let rnd  = System.Random()
-rnd.Next().ToString()
-
-DateTime.Now.ToString("yyyy-MM-ddTHH:mm:ss")
 
